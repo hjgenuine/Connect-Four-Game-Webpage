@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <title>Connect Four</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&family=Roboto');
+        body{
+            font-family: Poppins;
+            user-select: none;
+        }
+        .center{
+            margin: auto;
+        }
+        .row{
+            margin: auto;
+        }
+
+        #header{
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px 0px;
+            color: blue;
+        }
+        #header h1{
+            text-transform: uppercase;
+        }
+
+        #rulesSection{
+            padding: 20px 0px;
+            margin-top: 30px;
+            text-align: center;
+            background: rgba(78, 78, 78, 0.2);
+        }
+
+        #gameSection{
+            margin: 30px 0px;
+            text-align: center;
+            color: blue;
+        }
+        #gameSection .gameRow{
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #gameSection .gameRow:hover{
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2) inset;
+        }
+        #gameSection .gameCol{
+            cursor: pointer;
+            border: 2px solid black;
+            background-color: rgba(34, 67, 77, 0.2);
+            margin: 1px;
+            border-radius: 50%;
+            height: 80px;
+            width: 80px;
+            display: inline-block;
+        }
+
+        #reset{
+            margin: 10px auto;
+            border: 2px solid black;
+            background-color: rgb(0, 0, 226);
+            color: white;
+            padding: 10px 0px;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+        #reset:hover{
+            box-shadow: 0px 0px 10px 2px rgb(24, 24, 24) inset
+        }
+        
+        @media only screen and (max-width: 600px) {
+            #gameSection .gameCol {
+                height: 55px;
+                width: 55px;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+        <div id="headerSection" class="col-12">
+            <div id="header" class="col-md-4 col-9 center">
+                <h1>Connect Four</h1>
+            </div>
+        </div>
+        <div id="rulesSection" class="col-12">
+            <div id="rules" class="col-md-8 col-10 center">
+                <p class="lead" style="color: blue; font-size: 25px;">Rules</p>
+                <p>Connect Four is a two-player game with perfect information for both sides, meaning that nothing is hidden from anyone. Connect Four also belongs to the classification of an adversarial, zero-sum game, since a player's advantage is an opponent's disadvantage.</p>
+                <p>The objective of this game is to connect four of your chips in a row!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="gameSection">
+        <p class="lead" style="font-size: 25px;">Game <span id="display"></span></p>
+        <div class="gameRow" id="1">
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+        </div>
+        <div class="gameRow" id="2">
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+        </div>
+        <div class="gameRow" id="3">
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+        </div>
+        <div class="gameRow" id="4">
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+        </div>
+        <div class="gameRow" id="5">
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+        </div>
+        <div class="gameRow" id="6">
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+        </div>
+        <div class="gameRow" id="7">
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+            <div class="gameCol"></div>
+        </div>
+    </div>
+    
+    <div id="restart" class="row">
+        <button id="reset" class="col-md-1 col-3 btn btn-primary">Reset</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script>
+        var board = [[-1, -1, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1, -1]];
+        var lastIndex = [5, 5, 5, 5, 5, 5, 5];
+        var curr = 0;
+        var play = true;
+
+        var display = $("#display");
+        display.text("[Red's Turn]");
+        display.css("color", "Red");
+
+        function reset(){
+            board = [[-1, -1, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1, -1], [-1, -1, -1, -1, -1, -1, -1]];
+            lastIndex = [5, 5, 5, 5, 5, 5, 5];
+            curr = 0;
+            display.text("[Red's Turn]");
+            display.css("color", "Red");
+            play = true;
+            $('.gameCol').css("background-color", "rgba(34, 67, 77, 0.2)");
+        }
+
+        function checkWinner(i, j){
+            var cnt = 0
+            for(let x = 0; x < 4; x++){
+                if(i + x == 6 || board[i + x][j] != curr){
+                    break;
+                }
+                cnt += 1;
+            }
+            
+            var leftCnt = 0;
+            var rightCnt = 0;
+            for(let x = 1; x < 6; x++){
+                if(j - x == -1 || board[i][j - x] != curr){
+                    break;
+                }
+                leftCnt += 1;
+            }
+            for(let x = 1; x < 6; x++){
+                if(j + x == 7 ||  board[i][j + x] != curr){
+                    break;
+                }
+                rightCnt += 1;
+            }
+
+            console.log(cnt, leftCnt, rightCnt)
+            if(cnt >= 4 || leftCnt + rightCnt >= 3){
+                var winner = "";
+                if(curr == 0){
+                    winner = "Red";
+                }else{
+                    winner = "Yellow";
+                }
+                alert(winner + " Wins");
+                play = false;
+            }
+        }
+
+        async function addChip(){
+            if(!play){
+                return;
+            }
+            var col = $(this).parent();
+            var c = parseInt(col.attr("id")) - 1;
+            var r = lastIndex[c];
+            if(r != -1){
+                var insert = new Promise(function(resolve){
+                    var slot = $(".gameRow").eq(c).children().eq(r);
+                    if(curr == 0){
+                        slot.css("background-color", "red");
+                        display.text("[Yellow's Turn]");
+                        display.css("color", "Gold");
+                    }
+                    else{
+                        slot.css("background-color", "yellow");
+                        display.text("[Red's Turn]");
+                        display.css("color", "Red");
+                    }
+                    setTimeout(function(){resolve("100")}, 100);
+                })
+                await insert;
+                board[r][c] = curr;
+                checkWinner(r, c);
+                lastIndex[c] -= 1;
+                curr = !curr;
+            }
+        }
+        $('.gameCol').click(addChip);
+        $("#reset").click(reset);
+    </script>
+  </body>
+</html>
