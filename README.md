@@ -1,5 +1,7 @@
 # Connect-Four-Game-Webpage
 A simple Connect Four Game created using HTML, CSS, JS and Bootstrap. 
+
+![image](https://user-images.githubusercontent.com/64316945/176820606-a571ed18-154f-4aa3-9a84-fbab0a89ec4a.png)
 How to play? Players must connect 4 of the same colored discs in a row/column to win.
 
 # Webpage Images
